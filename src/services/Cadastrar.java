@@ -26,15 +26,15 @@ public class Cadastrar {
 			//Veiculos
 			Veiculo veiculo1, veiculo2, veiculo3, veiculo4;
 			veiculo1 = new Veiculo("KBU-0214",4);
-			veiculo2 = new Veiculo("NEM-9988",3);
+			veiculo2 = new Veiculo("NEM-9988",7);
 			veiculo3 = new Veiculo("JYQ-1219",6);
-			veiculo4 = new Veiculo("HYU-7848",4);
+			veiculo4 = new Veiculo("HYU-7848",7);
 			
 			//Viagens
 			Viagem destino1, destino2, destino3, destino4;
 			destino1 = new Viagem(Util.gerarIdViagem(), "22/10/2022", veiculo1, motorista1, "Recife", 4 );
 			destino2 = new Viagem(Util.gerarIdViagem(), "10/12/2022", veiculo2, motorista2, "Guarapari", 3 );
-			destino3 = new Viagem(Util.gerarIdViagem(), "01/09/2022", veiculo3, motorista3, "Bariloche", 6 );
+			destino3 = new Viagem(Util.gerarIdViagem(), "01/09/2022", veiculo3, motorista3, "Bariloche", 7 );
 			destino4 = new Viagem(Util.gerarIdViagem(), "01/09/2022", veiculo4, motorista4, "Bariloche", 4);
 			
 			//salvando motoristas
