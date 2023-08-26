@@ -16,7 +16,7 @@ public class Alterar {
 	public Alterar() {
 		try {
 			manager = Util.conectarBanco();
-			Query query, query2;
+			Query query, query2, query3;
 			
 			System.out.println("Iniciando alterações");
 			
@@ -36,7 +36,7 @@ public class Alterar {
 				
 			}
 			
-			System.out.println("Iniciando alterações nas viagens...");
+			System.out.println("Iniciando correções nas viagens...");
 			
 			//
 			query2 = manager.query();
@@ -51,8 +51,26 @@ public class Alterar {
 				}
 			}
 			
-			Util.desconectar();
+			/* trocar relacionamento, apenas o conceito
+			 
+			query3 = manager.query();
+			query3.constrain(Veiculo.class);
+			query3.descend("placa").constrain("KBU-0214");
+			List<Veiculo> resultado3 = query3.execute();
+			
+			if(resultado3.size()>0) {
+				Veiculo ve = resultado3.get(0);
+				ve.addViagem();
+				manager.store(ve);
+				manager.commit();
+			}
+			
+			*/
+			
 			System.out.println("Alterações feitas com sucesso!");
+			
+			Util.desconectar();
+			
 			
 		}catch(Exception e) {
 			System.out.println(e);
