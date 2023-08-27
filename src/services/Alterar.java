@@ -47,25 +47,29 @@ public class Alterar {
 			for( Viagem vi: resultado2) {
 				if(vi.getQuantidade() > vi.getVeiculo().getCapacidade()) {
 					vi.setQuantidade(vi.getVeiculo().getCapacidade());
-					System.out.println("A viagem:" + vi + " teve sua capacidade corrigida " );
+					System.out.println("A viagem para " + vi.getDestino() + " teve sua capacidade corrigida, agora sua quantidade de passageiros é  " + vi.getQuantidade() );
 				}
 			}
 			
-			/* trocar relacionamento, apenas o conceito
+
 			 
 			query3 = manager.query();
 			query3.constrain(Veiculo.class);
 			query3.descend("placa").constrain("KBU-0214");
 			List<Veiculo> resultado3 = query3.execute();
 			
+			//alterando capacidade da viagem e do veiculo
+			
 			if(resultado3.size()>0) {
 				Veiculo ve = resultado3.get(0);
-				ve.addViagem();
+				Viagem vi = ve.localizarViagem("Recife");
+				vi.setQuantidade(5);
+				ve.setCapacidade(5);
 				manager.store(ve);
 				manager.commit();
+				System.out.println("O veiculo " + ve.getPlaca() + " e a viagem de destino á " + vi.getDestino() + " tiveram sua capacidade e quantidade de passageiros alterada para " + vi.getQuantidade()  );
 			}
 			
-			*/
 			
 			System.out.println("Alterações feitas com sucesso!");
 			

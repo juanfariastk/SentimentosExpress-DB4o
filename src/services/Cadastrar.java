@@ -33,9 +33,21 @@ public class Cadastrar {
 			//Viagens
 			Viagem destino1, destino2, destino3, destino4;
 			destino1 = new Viagem(Util.gerarIdViagem(), "22/10/2022", veiculo1, motorista1, "Recife", 4 );
+			veiculo1.addViagem(destino1);
+			motorista1.addViagem(destino1);
+			
 			destino2 = new Viagem(Util.gerarIdViagem(), "10/12/2022", veiculo2, motorista2, "Guarapari", 3 );
+			veiculo2.addViagem(destino2);
+			motorista2.addViagem(destino2);
+			
 			destino3 = new Viagem(Util.gerarIdViagem(), "01/09/2022", veiculo3, motorista3, "Bariloche", 7 );
+			veiculo3.addViagem(destino3);
+			motorista3.addViagem(destino3);
+			
 			destino4 = new Viagem(Util.gerarIdViagem(), "01/09/2022", veiculo4, motorista4, "Bariloche", 4);
+			veiculo4.addViagem(destino4);
+			motorista4.addViagem(destino4);
+			
 			
 			//salvando motoristas
 			manager.store(motorista1);
