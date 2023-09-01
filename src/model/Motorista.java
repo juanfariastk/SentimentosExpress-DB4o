@@ -60,13 +60,7 @@ public class Motorista {
 	
 	@Override
 	public String toString() {
-		String texto = "Motorista [cnh=" + cnh + ", nome=" + nome + "] viagens= ";
-			if (lista.isEmpty())
-				texto += "Sem viagens";
-			else 	
-				for(Viagem v: lista) 
-					texto += v.getDestino() + " - " ; 
-		    return texto;
+	    return "Motorista [cnh=" + cnh + ", nome=" + nome + "]";
 	}
 
 }

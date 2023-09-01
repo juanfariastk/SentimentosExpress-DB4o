@@ -27,7 +27,7 @@ public class Alterar {
 			
 			if(resultado.size()>0) {
 				for(Veiculo v : resultado) {
-					//alterando capacidade de veiculo
+					//alterando capacidade
 					v.setCapacidade(4);
 					manager.store(v);
 					manager.commit();
@@ -38,7 +38,7 @@ public class Alterar {
 			
 			System.out.println("Iniciando correções nas viagens...");
 			
-			// alterando capacidade de viagem
+			//
 			query2 = manager.query();
 			query2.constrain(Viagem.class);
 			  
@@ -58,7 +58,7 @@ public class Alterar {
 			query3.descend("placa").constrain("KBU-0214");
 			List<Veiculo> resultado3 = query3.execute();
 			
-			//alteração de correção de capacidade da viagem e do veiculo
+			//alterando capacidade da viagem e do veiculo
 			
 			if(resultado3.size()>0) {
 				Veiculo ve = resultado3.get(0);

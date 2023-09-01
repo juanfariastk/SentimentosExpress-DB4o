@@ -67,14 +67,7 @@ public class Veiculo {
 
 	@Override
 	public String toString() {
-		String texto = "Veiculo [placa=" + placa + ", capacidade=" + capacidade + "] Viagens= " ;
-		if (lista.isEmpty())
-			texto += "Sem viagens";
-		else 	
-			for(Viagem v: lista) 
-				texto += v.getDestino() + " - " ; 
-		
-	    return texto;
+	    return "Veiculo [placa=" + placa + ", capacidade=" + capacidade + "]";
 	}
 
 	
