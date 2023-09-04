@@ -41,15 +41,19 @@ public class Consultar {
 			System.out.println(vi);
 		}
 		
-		//consultando motoristas que tenham mais de 5 viagens
-		 System.out.println("\nMotoristas com mais de 5 viagens:");
-		 Query q3 = manager.query();
-		 q3.constrain(Motorista.class);
-		 q3.descend("lista").descend("id").constrain(5).greater();
-		 List<Motorista> resultado_motoristas = q3.execute();
-		 for (Motorista motorista : resultado_motoristas) {
-		    System.out.println(motorista.getNome());
-		 }
+		//consultando motoristas que tenham mais de 2 viagens
+		System.out.println("\nMotoristas com mais de 2 viagens:");
+		Query q3 = manager.query();
+		q3.constrain(Motorista.class);
+		q3.descend("lista");
+		List<Motorista> resultado_motoristas = q3.execute();
+		for (Motorista motorista : resultado_motoristas) {
+		    if (motorista.getLista().size() > 2) {
+		        System.out.println(motorista.getNome());
+		        System.out.println(motorista);
+		    }
+		}
+
 		
 		
 	}
