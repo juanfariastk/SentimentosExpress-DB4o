@@ -51,6 +51,10 @@ public class Veiculo {
 	        }
 	        return viagemIds;
 	    }
+	 
+	 public List<Viagem> getViagem() {
+	        return lista;
+	    }
 	
 	public void removeViagem(Viagem viagem) {
 		lista.remove(viagem);

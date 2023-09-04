@@ -105,7 +105,7 @@ public class Cadastrar {
 			manager.store(destino6);
 			manager.commit();
 			
-			destino7 = new Viagem(Util.gerarIdViagem(), "25/01/2023", veiculo4, motorista1, "Areia", 5);
+			destino7 = new Viagem(Util.gerarIdViagem(), "18/01/2023", veiculo4, motorista1, "Areia", 5);
 			veiculo4.addViagem(destino7);
 			motorista1.addViagem(destino7);
 			manager.store(destino7);
