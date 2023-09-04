@@ -11,6 +11,15 @@ public class Cadastrar {
 	
 	protected ObjectContainer manager;
 	
+	
+	private boolean verificarViagemDuplicada(Viagem viagem) {
+        for (Viagem vi : manager.query(Viagem.class)) {
+            if (vi.equalsExcludingId(viagem)) {
+                return true;
+            }
+        }
+        return false;
+    }
 	public Cadastrar() {
 		try {
 			manager = Util.conectarBanco();
@@ -56,12 +65,15 @@ public class Cadastrar {
 			
 			//Viagens
 			Viagem destino1, destino2, destino3, destino4, destino5, destino6, destino7, destino8, destino9;
+			
 			destino1 = new Viagem(Util.gerarIdViagem(), "22/10/2022", veiculo1, motorista1, "Recife", 4 );
+			
 			veiculo1.addViagem(destino1);
 			motorista1.addViagem(destino1);
 			manager.store(destino1);
 			manager.commit();
-			
+
+
 			destino2 = new Viagem(Util.gerarIdViagem(), "10/12/2022", veiculo2, motorista2, "Guarapari", 3 );
 			veiculo2.addViagem(destino2);
 			motorista2.addViagem(destino2);
@@ -118,6 +130,7 @@ public class Cadastrar {
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+	
 
 		
 	}

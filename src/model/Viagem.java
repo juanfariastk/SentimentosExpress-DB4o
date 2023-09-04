@@ -1,5 +1,7 @@
 package model;
 
+import java.util.Objects;
+
 public class Viagem {
 	private int id;
 	private String data;
@@ -70,5 +72,43 @@ public class Viagem {
 		return "Viagem [id=" + id + ", data=" + data + ", veiculo=" + veiculo + ", motorista=" + motorista
 				+ ", destino=" + destino + ", quantidade=" + quantidade + "]";
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+	    if (this == obj) {
+	        return true;
+	    }
+	    if (obj == null || getClass() != obj.getClass()) {
+	        return false;
+	    }
+	    Viagem other = (Viagem) obj;
+	    return Objects.equals(data, other.data)
+	            && Objects.equals(veiculo, other.veiculo)
+	            && Objects.equals(motorista, other.motorista)
+	            && Objects.equals(destino, other.destino)
+	            && quantidade == other.quantidade;
+	}
+
+	public boolean equalsExcludingId(Viagem other) {
+	    if (this == other) {
+	        return true;
+	    }
+	    return Objects.equals(data, other.data)
+	            && Objects.equals(veiculo, other.veiculo)
+	            && Objects.equals(motorista, other.motorista)
+	            && Objects.equals(destino, other.destino)
+	            && quantidade == other.quantidade;
+	}
+
+	public Object localizarViagem(String destino2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void removeViagem(Viagem viagem) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }
