@@ -3,6 +3,8 @@ package services;
 import java.util.List;
 
 import com.db4o.ObjectContainer;
+import com.db4o.query.Candidate;
+import com.db4o.query.Evaluation;
 import com.db4o.query.Query;
 
 import model.*;
@@ -31,34 +33,49 @@ public class Consultar {
 			System.out.println(vi);
 		}
 		
-		//consultado as viagens com o veiculo de placa JYQ-1219
-		System.out.println("\nViagens do veiculo JYQ-1219");
-		Query q2 = manager.query();
-		q2.constrain(Veiculo.class);
-		q2.descend("placa").constrain("JYQ-1219");
-		List<Veiculo> resultado_viagens_veiculo = q2.execute();
-		for(Viagem vi: resultado_viagens_veiculo.get(0).getViagem()) {
-			System.out.println(vi);
-		}
+		// Consultado as viagens com o veículo de placa JYQ-1219
+        System.out.println("\nViagens do veículo JYQ-1219");
+        Query q2 = manager.query();
+        q2.constrain(Veiculo.class);
+        q2.descend("placa").constrain("JYQ-1219");
+        List<Veiculo> resultado_viagens_veiculo = q2.execute();
+        for (Veiculo veiculo : resultado_viagens_veiculo) {
+            for (Viagem vi : veiculo.getViagem()) {
+                try {
+                    System.out.println(vi);
+                } catch (NullPointerException e) {
+                    // Se uma exceção for lançada, apenas continue o loop sem imprimir a viagem nula
+                    continue;
+                }
+            }
+        }
 		
 		//consultando motoristas que tenham mais de 2 viagens
 		System.out.println("\nMotoristas com mais de 2 viagens:");
 		Query q3 = manager.query();
 		q3.constrain(Motorista.class);
-		q3.descend("lista");
+		q3.constrain(new FiltroQuantidadeViagensMotorista());
 		List<Motorista> resultado_motoristas = q3.execute();
 		for (Motorista motorista : resultado_motoristas) {
-		    if (motorista.getLista().size() > 2) {
-		        System.out.println(motorista.getNome());
-		        System.out.println(motorista);
-		    }
+		    System.out.println(motorista.getNome());
+		    System.out.println(motorista);
 		}
 
-		
-		
+
 	}
 	
 	public static void main(String[] args) {
 		new Consultar();
 	}
+}
+
+class FiltroQuantidadeViagensMotorista implements Evaluation {
+    public void evaluate(Candidate candidate) {
+        Motorista motorista = (Motorista) candidate.getObject();
+        if (motorista.getLista().size() > 2) {
+            candidate.include(true);
+        } else {
+            candidate.include(false);
+        }
+    }
 }
